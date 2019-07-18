@@ -8,11 +8,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 
+/**
+ * @author MIAOOY2
+ */
 public interface ObjectRepository extends JpaRepository<Object, Integer> {
+    /**
+     *  根据id查找object
+     */
     Object findById(Long id);
 
-    @Modifying
-    @Transactional
+    /**
+     * 根据id删除
+     */
     @Query("delete from Object where id = :id")
+    @Modifying
     void deleteById(@Param("id") Long id);
 }

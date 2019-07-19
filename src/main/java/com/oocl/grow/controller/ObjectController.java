@@ -17,7 +17,7 @@ public class ObjectController {
     /**
      * 所有目标 (按剩余时间升序)
      */
-    @RequestMapping(value = "objects", method = RequestMethod.GET)
+    @RequestMapping(value = "/objects", method = RequestMethod.GET)
     @ResponseBody
     public List<ObjectSortedDto> findAll(){
         return service.findAllObjects();
@@ -25,16 +25,16 @@ public class ObjectController {
     /**
      * 新增目标
      */
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseBody
     public String createObject(@RequestBody Object object){
         service.createObject(object);
         return "success";
     }
     /**
-     * 目标新街
+     * 根据Id获得目标
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Object findById(@PathVariable Long id){
         return service.findById(id);
@@ -42,7 +42,7 @@ public class ObjectController {
     /**
      * 删除目标
      */
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
     public String deleteById(@PathVariable Long id){
         service.deleteById(id);
@@ -51,7 +51,7 @@ public class ObjectController {
     /**
      * 更新目标
      */
-    @RequestMapping(value = "update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateObject(@RequestBody Object object){
         service.updateObject(object);

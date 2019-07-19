@@ -8,4 +8,8 @@ public interface WeeklyPlanService {
     WeeklyPlan getWeeklyPlanByWeeklyPlanId(int weeklyPlanId);
 
     List<WeeklyPlan> getAllWeeklyPlan();
+
+    WeeklyPlan updateWeeklyPlan(int weeklyPlanId, float completion_percent);
+
+    WeeklyPlan getWeeklyPlanByTime(int time);
 }

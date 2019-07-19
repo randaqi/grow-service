@@ -18,7 +18,19 @@ public class WeeklyPlanServiceImpl implements WeeklyPlanService {
     }
 
     @Override
+    public WeeklyPlan getWeeklyPlanByTime(int time){
+        return weeklyPlanRepository.findByTime(time);
+    }
+
+    @Override
     public List<WeeklyPlan> getAllWeeklyPlan() {
         return weeklyPlanRepository.findAll();
+    }
+
+    @Override
+    public WeeklyPlan updateWeeklyPlan(int weeklyPlanId, float completion_percent) {
+        WeeklyPlan weeklyPlan = weeklyPlanRepository.findByWeeklyPlanId(weeklyPlanId);
+        weeklyPlan.setCompletionPercent(completion_percent);
+        return weeklyPlanRepository.saveAndFlush(weeklyPlan);
     }
 }

@@ -9,11 +9,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author MIAOOY2
+ */
 @Controller
 @RequestMapping("/object")
 public class ObjectController {
+    private final ObjectService service;
+
     @Autowired
-    private ObjectService service;
+    public ObjectController(ObjectService service) {
+        this.service = service;
+    }
+
     /**
      * 所有目标 (按剩余时间升序)
      */

@@ -4,6 +4,7 @@ import com.oocl.grow.common.CommonUtils;
 import com.oocl.grow.dto.ObjectSortedDto;
 import com.oocl.grow.model.Object;
 import com.oocl.grow.repository.ObjectRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
@@ -38,12 +39,11 @@ public class ObjectServiceImpl implements ObjectService {
         List<ObjectSortedDto> objectSortedDtos = new ArrayList<>();
         for(Object object : objectList){
             ObjectSortedDto objectSortedDto = new ObjectSortedDto();
-            objectSortedDto.setId(object.getId());
+            BeanUtils.copyProperties(object, objectSortedDto);
             objectSortedDto.setBeginDate(CommonUtils.formatLocalDateTime(object.getBeginDate()));
             objectSortedDto.setEndDate(CommonUtils.formatLocalDateTime(object.getEndDate()));
-            objectSortedDto.setDescription(object.getDescription());
             objectSortedDto.setRestDays(CommonUtils.restDays(LocalDateTime.now(),CommonUtils.formatStringToLocalTime(object.getEndDate())));
-            objectSortedDto.setImgUrl(object.getImgsPath().split("@")[0]);
+//            objectSortedDto.setImgUrl(object.getImgsPath().split("@")[0]);
             objectSortedDtos.add(objectSortedDto);
         }
         return objectSortedDtos;

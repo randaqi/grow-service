@@ -3,6 +3,9 @@ package com.oocl.grow.dto;
 
 import lombok.Data;
 
+/**
+ * @author MIAOOY2
+ */
 @Data
 public class ObjectSortedDto {
     private Long id;
@@ -10,5 +13,9 @@ public class ObjectSortedDto {
     private String beginDate;
     private String endDate;
     private Integer restDays;
-    private String imgUrl;
+    private String imgsPath;
+    private String keyResults;
+    private String reason;
+    private String statusAndBlock;
+    private String waysToCrossBlocks;
 }

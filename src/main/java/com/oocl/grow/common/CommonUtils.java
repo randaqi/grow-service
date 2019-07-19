@@ -24,6 +24,9 @@ public class CommonUtils {
 
      */
     public static String formatLocalDateTimeToCn(String localDateTime){
+        if (localDateTime.length() == 21){
+          localDateTime = localDateTime.substring(0,19);
+        }
         DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
         return formatter.format(LocalDateTime.parse(localDateTime,df));
@@ -41,9 +44,10 @@ public class CommonUtils {
      * 将(yyyy年MM月dd日)转换为(yyyy-MM-dd)
      */
     public static String formatCNToLocalTime(String localDateTime){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return String.valueOf(LocalDate.parse(localDateTime,formatter));
     }
+
 
     /**
      *  计算剩余天数

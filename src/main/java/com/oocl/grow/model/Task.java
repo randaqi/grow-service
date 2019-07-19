@@ -18,17 +18,17 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column
-    private String desc;
+    private String taskDesc;
 
     @Column
-    private int weeklyPlanId;
+    private Integer weeklyPlanId;
 
     @Column
-    private int status;
+    private Integer taskStatus;
 
     @Column
-    private int objectiveId;
+    private Integer objectiveId;
 }

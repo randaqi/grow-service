@@ -1,7 +1,9 @@
 package com.oocl.grow.controller;
 
+import com.oocl.grow.model.Task;
 import com.oocl.grow.model.WeeklyPlan;
 import com.oocl.grow.repository.WeeklyPlanRepository;
+import com.oocl.grow.service.TaskService;
 import com.oocl.grow.service.WeeklyPlanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,8 @@ public class WeeklyPlanRestController {
 
     @Autowired
     private WeeklyPlanService weeklyPlanService;
+    @Autowired
+    private TaskService taskService;
 
     @GetMapping
     public List<WeeklyPlan> getAllWeeklyPlans(){
@@ -24,8 +28,8 @@ public class WeeklyPlanRestController {
     }
 
     @GetMapping("/{id}")
-    public WeeklyPlan getWeeklyPlan(@PathVariable Integer id){
-        return weeklyPlanService.getWeeklyPlanByWeeklyPlanId(id);
+    public List<Task> getWeeklyPlan(@PathVariable Integer id){
+        return taskService.getTasksByWeeklyPlanId(id);
     }
 
 }
